@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 export default function Navbar() {
     return (
         <div className='navbar'>
-            <h1>Todo App </h1>
+            <h1 style={navHeader} >Notes App  </h1>
             <Link style={linkStyle} to="/"> Home </Link> | <Link style={linkStyle} to='/about'>About</Link>
          </div>
     )
@@ -11,6 +11,13 @@ export default function Navbar() {
 
 
 const linkStyle = {
-    color : '#111',
-    textDecoration : 'none' 
+    color : '#4fc3f7',
+    textDecoration : 'none' ,
+    margin : '1rem'
+}
+
+const navHeader ={
+    color : '#0093c4',
+    display : 'inline-block', 
+    marginRight : '2rem'
 }

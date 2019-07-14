@@ -5,18 +5,20 @@ import Todos from './components/Todos';
 import Navbar from './components/Navbar';
 import AddItem from './components/addItem';
 import About from './components/About';
-// import uuid from 'uuid'; // add a Unique Id
-import axios from 'axios'; // For Fetching Data
-
+import uuid from 'uuid'; // add a Unique Id
 class App extends React.Component {
   state = {
-    todos :[]
+    todos :[
+      {
+         id : uuid.v4(),
+        title : 'The Age'
+      }
+    ]
   }
 
     // get the Data From JsonServer With Axios
   componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-      .then(res => this.setState({todos : res.data}) )
+   
   }
 
   markCompelted = (id) =>{
@@ -36,12 +38,14 @@ class App extends React.Component {
   }
 
   addItem = (title) => {
-    axios.post('https://jsonplaceholder.typicode.com/todos', {
-      title ,
-      completed : false
-    })
-    .then(res => this.setState({todos : [...this.state.todos , res.data]}))
-  }
+    const Item = {
+      id : uuid.v4(),
+      title
+    }
+    this.setState({todos : [...this.state.todos , Item]})
+    }
+  
+  
   render(){
     return(
       <Router>
@@ -51,7 +55,6 @@ class App extends React.Component {
               <AddItem addItem = {this.addItem} />
               <Todos 
               todos = {this.state.todos} 
-              markCompelted ={this.markCompelted}
               delItem ={this.delItem}
               />
           </React.Fragment>

@@ -15,7 +15,6 @@ export default class Todos extends Component {
         })
         return (
             <div>
-                <p>Today List is :- </p>
                 <ul>
                     {items}
                 </ul>
