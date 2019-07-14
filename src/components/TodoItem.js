@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types';
+import DelImage from '../img/Del.png'
 export default class TodoItem extends Component {
     
     getStyle = () => {
@@ -9,14 +10,18 @@ export default class TodoItem extends Component {
                borderBottom : '1px solid #ccc',
                height : '200px',
                width : '60%',
-               margin : '10px auto'
+               margin : '10px auto',
+               position : 'relative'
            }
     }
     btnStyle =() =>{
         return {
-                float : 'right',
-                padding : '3px',
-                backgroundColor : 'red'
+                position : 'absolute',
+                right : '15px',
+                top : '10px',
+                padding : '2px',
+                width: '35px'
+
         }
     }
 
@@ -29,14 +34,17 @@ export default class TodoItem extends Component {
             <div style = {this.getStyle()} >
                 <div style ={itemHeader}>
                    {formatted_date.toString()}
+                   <img 
+                        src = {DelImage}
+                        alt =''
+                        style={this.btnStyle()}
+                        onClick = {this.props.delItem.bind(this,id)}
+                        >
+                </img>
                 </div>
                 {' '}
                 {title}
-                <button 
-                style={this.btnStyle()}
-                onClick = {this.props.delItem.bind(this,id)}
-                >
-                {'X'}</button>
+                
             </div>
         )
     }
@@ -48,6 +56,9 @@ const itemHeader = {
     padding : '3px', 
     marginBottom : '15px', 
     borderBottom : '1px solid #ccc'
+}
+const DelImageStyle = { 
+   
 }
 
 // PropTypes
