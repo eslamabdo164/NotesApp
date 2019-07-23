@@ -11,7 +11,7 @@ class App extends React.Component {
     todos :[
       {
          id : uuid.v4(),
-         title : 'The Age ' 
+         title : 'Try using the Editor Above to Style Your Notes' 
       }
     ]
   }

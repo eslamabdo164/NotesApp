@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types';
-import DelImage from '../img/Del.png'
-import ReactDOMServer from 'react-dom/server';
+import DelImage from '../img/Del.png';
+import Markdown from 'react-markdown';
 export default class TodoItem extends Component {
     state = {
         edit : false,
@@ -29,18 +29,7 @@ export default class TodoItem extends Component {
                 width: '35px'
         }
     }
-handleEdit = () => {
-    this.setState({
-        edit : true
-    })                                                                                                                                     
-}
-doneEdit = (e) => {
-   if(e.keyCode === 13){
-       this.setState({
-           edit : false
-       })
-   }
-}
+
 onChange = (e) => {
     console.log(e.target.value)
     this.setState({
@@ -64,7 +53,7 @@ onChange = (e) => {
         const {id , title} = this.props.item;
         return (
             <div>
-                <div style = {this.getStyle()} onDoubleClick ={this.handleEdit} >
+                <div style = {this.getStyle()} >
                     <div style ={itemHeader}>
                     {dateTime.toString()}
                     <img 
@@ -76,17 +65,8 @@ onChange = (e) => {
                         </img>
                     </div>
 
-                    {title}
+                   <Markdown source = {title} />
 
-                   {/*  {/* the below is the Edit Mode */}
-                    <div> 
-                     <input 
-                     onKeyDown ={this.doneEdit}
-                     style ={editStyle} 
-                     defaultValue ={title} 
-                     onChange = {this.onChange}
-                     />
-                     </div> 
                 </div>
                 
             </div>
@@ -106,5 +86,3 @@ const itemHeader = {
 TodoItem.propTypes = {
     item : propTypes.object.isRequired
 }
-
-// How To update Title When Enter is clicked .. and Title Edited

@@ -22,11 +22,13 @@ export default class addItem extends Component {
             <form style ={{ marginBottom : '20px'}}>
                 <SimpleMDE 
                 onChange={this.handleChange}
+                value = {this.state.mdeValue}
                 style ={
                     {
                     margin : 'auto', 
                     display : 'block',
                     width : '50%', 
+                    height : '10%',
                     minHeight : '6rem',
                     padding : '10px'
                 }}
