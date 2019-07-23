@@ -11,7 +11,7 @@ class App extends React.Component {
     todos :[
       {
          id : uuid.v4(),
-        title : 'The Age'
+         title : 'The Age ' 
       }
     ]
   }
@@ -45,6 +45,13 @@ class App extends React.Component {
     this.setState({todos : [...this.state.todos , Item]})
     }
   
+    handleChange = (update) =>{
+      this.setState({
+       todos : [{
+         title : update
+       }]
+      })
+  }
   
   render(){
     return(
@@ -56,6 +63,7 @@ class App extends React.Component {
               <Todos 
               todos = {this.state.todos} 
               delItem ={this.delItem}
+              handleChange ={this.handleChange}
               />
           </React.Fragment>
         )} /> 

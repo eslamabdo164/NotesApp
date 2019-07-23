@@ -10,6 +10,7 @@ export default class Todos extends Component {
                      item={item} 
                      markCompelted ={this.props.markCompelted} 
                      delItem = {this.props.delItem}
+                     handleChange = {this.props.handleChange}
                      />
                 </div>
         })
