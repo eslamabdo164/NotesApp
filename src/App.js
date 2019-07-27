@@ -6,21 +6,17 @@ import Navbar from './components/Navbar';
 import AddItem from './components/addItem';
 import About from './components/About';
 import uuid from 'uuid'; // add a Unique Id
-class App extends React.Component {
+class App extends React.Component {  
   state = {
-    todos :[
+    todos : (JSON.parse(localStorage.getItem('todos'))) ? (JSON.parse(localStorage.getItem('todos'))) : [
       {
          id : uuid.v4(),
          title : 'Try using the Editor Above to Style Your Notes' 
       }
-    ]
+     ]
+     
   }
-
-    // get the Data From JsonServer With Axios
-  componentDidMount() {
-   
-  }
-
+  
   markCompelted = (id) =>{
     this.setState({todos : this.state.todos.map(todo => {
       if(todo.id === id) {
@@ -43,17 +39,11 @@ class App extends React.Component {
       title
     }
     this.setState({todos : [...this.state.todos , Item]})
-    }
-  
-    handleChange = (update) =>{
-      this.setState({
-       todos : [{
-         title : update
-       }]
-      })
   }
   
   render(){
+    // Tip : I have Put this here to ensure that the state is already updated!
+    localStorage.setItem('todos' ,JSON.stringify(this.state.todos) ) // add to local storage
     return(
       <Router>
         <Navbar />
@@ -63,7 +53,6 @@ class App extends React.Component {
               <Todos 
               todos = {this.state.todos} 
               delItem ={this.delItem}
-              handleChange ={this.handleChange}
               />
           </React.Fragment>
         )} /> 
@@ -77,3 +66,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+// Next : work on remove Items from state and local Storage Too 

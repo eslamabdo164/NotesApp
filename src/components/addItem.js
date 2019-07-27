@@ -7,8 +7,7 @@ export default class addItem extends Component {
     }
 
     handleChange = value => {
-        this.setState({ mdeValue: value });
-        console.log(this.state.mdeValue)
+        this.setState({ mdeValue: value })
       };
 
     onSubmit = (e) => {
